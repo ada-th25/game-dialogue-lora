@@ -1,0 +1,5 @@
+venv/
+data/*.jsonl
+checkpoints/
+.env
+__pycache__/
