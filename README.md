@@ -7,10 +7,6 @@ This project fine-tunes a small open LLM (Llama 3.1 8B) via LoRA to
 generate dialogue conditioned on this structured input, and compares 
 it against a few-shot prompted baseline.
 
-This project was built as part of my application portfolio for 
-ML research roles in the games industry, exploring LLM fine-tuning 
-and controllable text generation.
-
 ## Status: In Progress
 
 ## Steps
