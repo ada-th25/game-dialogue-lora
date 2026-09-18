@@ -10,8 +10,8 @@ it against a few-shot prompted baseline.
 ## Status: In Progress
 
 ## Steps
-- [ ] Define structured input/output schema (`docs/schema.md`)
-- [ ] Generate seed data via LLM-assisted synthesis (`src/generate_seed_data.py`)
+- [x] Define structured input/output schema (`docs/schema.md`)
+- [x] Generate seed data via LLM-assisted synthesis (`src/generate_seed_data.py`)
 - [ ] Manually curate seed data
 - [ ] Build few-shot baseline (`src/baseline_prompt.py`)
 - [ ] Fine-tune Llama 3.1 8B with LoRA/PEFT
@@ -20,13 +20,13 @@ it against a few-shot prompted baseline.
 
 ## Setup
 
-\`\`\`bash
+```bash
 git clone https://github.com/ada-th25/game-dialogue-lora.git
 cd game-dialogue-lora
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-\`\`\`
+```
 
 Requires [Ollama](https://ollama.com) running locally with `llama3.1:8b` pulled.
 
