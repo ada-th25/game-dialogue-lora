@@ -12,7 +12,7 @@ it against a few-shot prompted baseline.
 ## Steps
 - [x] Define structured input/output schema (`docs/schema.md`)
 - [x] Generate seed data via LLM-assisted synthesis (`src/generate_seed_data.py`)
-- [ ] Manually curate seed data
+- [x] Manually curate seed data
 - [ ] Build few-shot baseline (`src/baseline_prompt.py`)
 - [ ] Fine-tune Llama 3.1 8B with LoRA/PEFT
 - [ ] Evaluate fine-tuned vs baseline
