@@ -13,7 +13,7 @@ it against a few-shot prompted baseline.
 - [x] Define structured input/output schema (`docs/schema.md`)
 - [x] Generate seed data via LLM-assisted synthesis (`src/generate_seed_data.py`)
 - [x] Manually curate seed data
-- [ ] Build few-shot baseline (`src/baseline_prompt.py`)
+- [x] Build few-shot baseline (`src/baseline_prompt.py`)
 - [ ] Fine-tune Llama 3.1 8B with LoRA/PEFT
 - [ ] Evaluate fine-tuned vs baseline
 - [ ] Write up results and limitations
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 Requires [Ollama](https://ollama.com) running locally with `llama3.1:8b` pulled.
 
 ## Data
-Seed data is LLM-generated then manually curated — not scraped 
+Seed data is LLM-generated then manually curated, not scraped 
 from real game chat/dialogue. This is noted explicitly as a 
 limitation in the writeup.
 
