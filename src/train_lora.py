@@ -108,7 +108,7 @@ def main():
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16,
+        bnb_4bit_compute_dtype=torch.float16,
     )
 
     model = AutoModelForCausalLM.from_pretrained(
@@ -136,7 +136,7 @@ def main():
         learning_rate=2e-4,
         logging_steps=10,
         save_strategy="epoch",
-        bf16=True,
+        fp16=True,
         report_to="none",
     )
 
