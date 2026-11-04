@@ -1,0 +1,14 @@
+# Used locally (Mac, no CUDA) for data generation, baseline prompting, and eval.
+requests
+huggingface_hub
+
+# Used for training (src/train_lora.py). Requires a CUDA GPU - run on Colab,
+# not locally. Left unpinned deliberately: Colab manages the CUDA version,
+# and pinning torch/transformers too tightly can conflict with whatever
+# CUDA build Colab has preinstalled.
+torch
+transformers
+datasets
+peft
+bitsandbytes
+accelerate
