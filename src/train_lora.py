@@ -76,17 +76,43 @@ def format_example(row):
     return {"text": full_text, "prompt": prompt}
 
 
+def mask_prompt_tokens(labels, prompt_len, pad_token_id):
+    """Return a copy of `labels` with prompt tokens and padding tokens
+    replaced by -100 (the ignore_index for CrossEntropyLoss), so loss is
+    only computed over the dialogue completion tokens.
+
+    Args:
+        labels: list[int], token ids for the full (prompt + completion) text,
+            already padded to a fixed length.
+        prompt_len: int, number of tokens the prompt alone tokenizes to.
+        pad_token_id: int, the tokenizer's pad token id.
+
+    Returns:
+        list[int] of the same length as `labels`.
+    """
+    labels = labels.copy()
+    for i in range(prompt_len):
+        labels[i] = -100  # ignore prompt tokens
+    for i in range(prompt_len, len(labels)):
+        if labels[i] == pad_token_id:
+            labels[i] = -100  # ignore padding tokens
+    return labels
+
+
 def tokenize_fn(tokenizer, example):
-    # Tokenize full text; loss is computed over the whole sequence for
-    # simplicity. For cleaner results later, consider masking the prompt
-    # tokens (label = -100) so loss only counts the completion.
     tokens = tokenizer(
         example["text"],
         truncation=True,
         max_length=128,
         padding="max_length",
     )
-    tokens["labels"] = tokens["input_ids"].copy()
+    # Tokenize the prompt alone (no padding/truncation) just to measure
+    # how many tokens of `tokens["input_ids"]` belong to the prompt.
+    prompt_len = len(tokenizer(example["prompt"])["input_ids"])
+
+    tokens["labels"] = mask_prompt_tokens(
+        tokens["input_ids"], prompt_len, tokenizer.pad_token_id
+    )
     return tokens
 
 
